@@ -15,9 +15,12 @@ import lombok.ToString;
 public class insertDTO {
 	private int i_num;
 	private int g_num;
-	@NonNull private String m_id;
-	@NonNull private String m_position;
-	@NonNull private String m_nick;
+	@NonNull
+	private String m_id;
+	@NonNull
+	private String m_position;
+	@NonNull
+	private String m_nick;
 	private String i_date;
 
 }
