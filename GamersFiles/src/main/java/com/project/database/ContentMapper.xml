@@ -11,14 +11,14 @@
 		insert into p_content
 		values(content_num.nextval ,#{c_name})
 	</insert>
-	<delete id="delContent" parameterType="String">
+	<delete id="deleteContent" parameterType="String">
 		delete from p_content
 		where c_name=#{c_name}
 	</delete>
 	<select id="allContent" resultType="ContentDTO">
 		select * from p_content
 	</select>
-	<select id="viewContent" resultType="String">
+	<select id="selectContent" resultType="String">
 		select c_name from p_content
 		where c_num = #{c_num}
 	</select>
