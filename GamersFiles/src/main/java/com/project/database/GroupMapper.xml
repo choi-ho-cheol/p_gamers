@@ -6,11 +6,11 @@
 	<insert id="insertGroup" parameterType="GroupDTO">
 		insert into p_group	values(group_num.nextval , #{g_name}, to_date(#{g_date},'yyyy-mm-dd hh24:mi:ss'), #{c_num})
 	</insert>
-	<select id="loginGroup" parameterType="GroupDTO"
+	<select id="selectGroup" parameterType="GroupDTO"
 		resultType="GroupDTO">
 		select * from p_group where g_num=#{g_num}
 	</select>
-	<select id="groupCheck" parameterType="String"
+	<select id="GroupCheck" parameterType="String"
 		resultType="boolean">
 		select case when count(*)>0 then 1
 		else 0

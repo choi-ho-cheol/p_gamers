@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.database.MessageMapper">
-	<insert id="sendMessage" parameterType="MessageDTO">
+	<insert id="insertMessage" parameterType="MessageDTO">
 		insert into p_message
 		values(num_message.nextval, #{sender}, #{recipient}, #{message},
 		sysdate)
@@ -14,10 +14,10 @@
 		where recipient=#{email} 
 		order by m_date
 	</select>
-	<delete id="delMessage" parameterType="Integer">
+	<delete id="deleteMessage" parameterType="Integer">
 		delete from p_message where num=#{num}
 	</delete>
-	<delete id="delAll" parameterType="String">
+	<delete id="deleteAll" parameterType="String">
 		delete from p_message where recipient=#{email}
 	</delete>
 </mapper>
