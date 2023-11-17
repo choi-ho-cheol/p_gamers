@@ -9,11 +9,11 @@
 <mapper namespace="com.project.database.InsertMapper">
 	<insert id="insertGroup" parameterType="InsertDTO">
 		insert into p_member
-		values(#{m_email}, #{m_pw}, #{m_nick}, #{m_class}, null, null)
+		values(#{m_id}, #{m_pw}, #{m_nick}, #{m_position}, sysdate)
 	</insert>
 	<select id="selectMember" parameterType="MemberDTO"
 		resultType="MemberDTO">
-		select * from p_member where m_email=#{m_email} and
+		select * from p_member where m_id=#{m_id} and
 		m_pw=#{m_pw}
 	</select>
 	<select id="EmailCheck" parameterType="String"
@@ -22,20 +22,20 @@
 		else 0
 		end result
 		from
-		p_member where m_email=#{m_email}
+		p_member where m_id=#{m_id}
 	</select>
 	<update id="updateMember" parameterType="MemberDTO">
 		update p_member set
-		m_pw=#{m_pw}, m_nick=#{m_nick}, m_class=#{m_class} where
-		m_email=#{m_email}
+		m_pw=#{m_pw}, m_nick=#{m_nick}, m_position=#{m_position} where
+		m_id=#{m_id}
 	</update>
 	<select id="allMember" resultType="MemberDTO">
 		select * from p_member where
-		not(m_email='admin')
+		not(m_id='admin')
 	</select>
 	<delete id="deleteMember" parameterType="String">
 		delete from p_member
 		where
-		m_email=#{m_email}
+		m_id=#{m_id}
 	</delete>
 </mapper>

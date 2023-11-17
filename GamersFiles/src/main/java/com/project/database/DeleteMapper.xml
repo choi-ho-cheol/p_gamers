@@ -9,7 +9,7 @@
 <mapper namespace="com.project.database.MemberMapper">
 	<insert id="insertMember" parameterType="MemberDTO">
 		insert into p_member
-		values(#{m_id}, #{m_pw}, #{m_nick}, #{m_position}, #{m_date})
+		values(#{m_id}, #{m_pw}, #{m_nick}, #{m_position}, sysdate)
 	</insert>
 	<select id="selectMember" parameterType="MemberDTO"
 		resultType="MemberDTO">

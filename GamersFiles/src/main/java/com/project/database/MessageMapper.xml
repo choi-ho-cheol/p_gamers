@@ -5,19 +5,19 @@
 <mapper namespace="com.project.database.MessageMapper">
 	<insert id="insertMessage" parameterType="MessageDTO">
 		insert into p_message
-		values(num_message.nextval, #{sender}, #{recipient}, #{message},
+		values(num_message.nextval, #{e_sender}, #{e_recipient}, #{e_content},
 		sysdate)
 	</insert>
 	<select id="detailMessage" resultType="MessageDTO">
 		select * 
 		from p_message
-		where recipient=#{email} 
-		order by m_date
+		where e_recipient=#{e_recipient} 
+		order by e_date
 	</select>
 	<delete id="deleteMessage" parameterType="Integer">
-		delete from p_message where num=#{num}
+		delete from p_message where e_num=#{e_num}
 	</delete>
 	<delete id="deleteAll" parameterType="String">
-		delete from p_message where recipient=#{email}
+		delete from p_message where e_recipient=#{e_sender}
 	</delete>
 </mapper>
