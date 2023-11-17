@@ -14,21 +14,12 @@ public class ContentDAO {
 	// connection, close, ... sql문 실행
 	SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
-	public List<ContentDTO> allContent() {
-		List<ContentDTO> contents = null;
-		try {
-			contents = sqlSession.selectList("com.project.database.ContentMapper.allContent");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return contents;
-	}
-
+	// 데이터 생성
 	public int insertContent(ContentDTO cdto) {
 		int cnt = 0;
 
 		try {
-			cnt = sqlSession.insert("com.project.database.ContentMapper.insertContent", cdto);
+			cnt = sqlSession.insert("com.project.database.MemberMapper.insertContent", cdto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -36,13 +27,43 @@ public class ContentDAO {
 		}
 
 		return cnt;
+	}
+
+	// 데이터 조회
+	public ContentDTO selectContent(ContentDTO cdto) {
+		ContentDTO select = null;
+		try {
+			select = sqlSession.selectOne("com.project.database.MemberMapper.selectContent", cdto);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+
+		return select;
 
 	}
 
-	public int delContent(String c_num) {
+	// 데이터 중복 체크
+	public boolean contentCheck(String inputC) {
+		boolean isCheck = false;
+		try {
+			isCheck = sqlSession.selectOne("com.project.database.MemberMapper.contentCheck", inputC);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return isCheck; // true or false
+
+	}
+
+	// 데이터 수정
+	public int updateContent(ContentDTO cdto) {
 		int cnt = 0;
 		try {
-			cnt = sqlSession.delete("com.project.database.ContentMapper.delContent", c_num);
+			cnt = sqlSession.update("com.project.database.MemberMapper.updateContent", cdto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -50,17 +71,30 @@ public class ContentDAO {
 		}
 		return cnt;
 	}
-	
-	public String viewContent(String c_num) {
-		String result = "";
+
+	// 데이터 리스트
+	public List<ContentDTO> contentList() {
+		List<ContentDTO> contents = null;
 		try {
-			result = sqlSession.selectOne("com.project.database.ContentMapper.viewContent", c_num);
+			contents = sqlSession.selectList("com.project.database.MemberMapper.contentList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			sqlSession.close();
 		}
-		return result;
+		return contents;
 	}
 
+	// 데이터 삭제
+	public int deleteContent(int c_num) {
+		int cnt = 0;
+		try {
+			cnt = sqlSession.delete("com.project.database.MemberMapper.deleteContent", c_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return cnt;
+	}
 }

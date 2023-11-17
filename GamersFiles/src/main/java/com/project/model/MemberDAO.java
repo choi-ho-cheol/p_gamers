@@ -15,11 +15,11 @@ public class MemberDAO {
 	SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
 	// 데이터 생성
-	public int joinMember(MemberDTO mdto) {
+	public int insertMember(MemberDTO mdto) {
 		int cnt = 0;
 
 		try {
-			cnt = sqlSession.insert("com.project.database.MemberMapper.joinMember", mdto);
+			cnt = sqlSession.insert("com.project.database.MemberMapper.insertMember", mdto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -30,10 +30,10 @@ public class MemberDAO {
 	}
 
 	// 데이터 조회
-	public MemberDTO loginMember(MemberDTO mdto) {
+	public MemberDTO selectMember(MemberDTO mdto) {
 		MemberDTO login = null;
 		try {
-			login = sqlSession.selectOne("com.project.database.MemberMapper.loginMember", mdto);
+			login = sqlSession.selectOne("com.project.database.MemberMapper.selectMember", mdto);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,10 +73,10 @@ public class MemberDAO {
 	}
 	
 	// 데이터 리스트
-	public List<MemberDTO> allMember() {
+	public List<MemberDTO> memberList() {
 		List<MemberDTO> members = null;
 		try {
-			members = sqlSession.selectList("com.project.database.MemberMapper.allMember");
+			members = sqlSession.selectList("com.project.database.MemberMapper.memberList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -86,7 +86,7 @@ public class MemberDAO {
 	}
 	
 	// 데이터 삭제
-	public int delMember(String m_email) {
+	public int deleteMember(String m_email) {
 		int cnt = 0;
 		try {
 			cnt = sqlSession.delete("com.project.database.MemberMapper.delMember", m_email);
