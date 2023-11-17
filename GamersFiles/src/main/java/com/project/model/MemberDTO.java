@@ -17,7 +17,6 @@ public class MemberDTO {
 	@NonNull private String m_id;
 	@NonNull private String m_pw;
 	private String m_nick;
-	private String m_email;
 	private String m_position;
 	private String m_date;
 

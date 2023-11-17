@@ -14,7 +14,7 @@ public class MemberDAO {
 	// connection, close, ... sql문 실행
 	SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
-	// 회원가입
+	// 데이터 생성
 	public int joinMember(MemberDTO mdto) {
 		int cnt = 0;
 
@@ -29,7 +29,7 @@ public class MemberDAO {
 		return cnt;
 	}
 
-	// 로그인
+	// 데이터 조회
 	public MemberDTO loginMember(MemberDTO mdto) {
 		MemberDTO login = null;
 		try {
@@ -45,7 +45,7 @@ public class MemberDAO {
 
 	}
 
-	// 중복체크
+	// 데이터 중복 체크
 	public boolean emailCheck(String inputE) {
 		boolean isCheck = false;
 		try {
@@ -59,7 +59,7 @@ public class MemberDAO {
 
 	}
 
-	// 회원정보 수정
+	// 데이터 수정
 	public int updateMember(MemberDTO mdto) {
 		int cnt = 0;
 		try {
@@ -71,7 +71,8 @@ public class MemberDAO {
 		}
 		return cnt;
 	}
-
+	
+	// 데이터 리스트
 	public List<MemberDTO> allMember() {
 		List<MemberDTO> members = null;
 		try {
@@ -83,7 +84,8 @@ public class MemberDAO {
 		}
 		return members;
 	}
-
+	
+	// 데이터 삭제
 	public int delMember(String m_email) {
 		int cnt = 0;
 		try {
