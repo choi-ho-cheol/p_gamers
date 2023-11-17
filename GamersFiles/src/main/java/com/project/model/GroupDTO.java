@@ -1,7 +1,5 @@
 package com.project.model;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +15,9 @@ import lombok.ToString;
 public class GroupDTO {
 
 	private int g_num;
+	private int c_num;
 	@NonNull
 	private String m_id;
-	private int c_num;
 	@NonNull
 	private String g_start;
 	@NonNull

@@ -12,10 +12,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
-public class ChattingDTO {
-	private int w_num;
+public class CalendarDTO {
+	private int a_num;
 	private int g_num;
-	@NonNull private String m_id;
-	@NonNull private String w_content;
-	private String w_date;	
+	@NonNull private String c_start;
+	@NonNull private String c_end;
+	@NonNull private String c_content;
+	private String a_date;
 }

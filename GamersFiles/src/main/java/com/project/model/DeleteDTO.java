@@ -12,7 +12,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @Getter
 @ToString
-public class deleteDTO {
+public class DeleteDTO {
 	private int d_num;
 	private int g_num;
 	@NonNull private String m_id;
